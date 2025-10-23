@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { SessionProvider } from "next-auth/react";
-import { ThemeProvider } from "next-themes";
-import { PropsWithChildren } from "react";
-import { Toaster } from "react-hot-toast";
+import { SessionProvider } from 'next-auth/react';
+import { ThemeProvider } from 'next-themes';
+import { PropsWithChildren } from 'react';
+import { Toaster } from 'react-hot-toast';
 
 export default function Providers({ children }: PropsWithChildren) {
   return (
@@ -11,8 +11,7 @@ export default function Providers({ children }: PropsWithChildren) {
       <ThemeProvider
         attribute="class"
         enableSystem={false}
-        defaultTheme="light"
-      >
+        defaultTheme="light">
         <Toaster />
 
         {children}

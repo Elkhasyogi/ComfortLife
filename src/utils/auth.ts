@@ -1,37 +1,37 @@
-import bcrypt from "bcrypt";
-import { NextAuthOptions } from "next-auth";
-import CredentialsProvider from "next-auth/providers/credentials";
-import GitHubProvider from "next-auth/providers/github";
-import GoogleProvider from "next-auth/providers/google";
-import EmailProvider from "next-auth/providers/email";
-import { PrismaAdapter } from "@auth/prisma-adapter";
-import { PrismaClient } from "@prisma/client";
-import { prisma } from "./prismaDB";
-import type { Adapter } from "next-auth/adapters";
+import bcrypt from 'bcrypt';
+import { NextAuthOptions } from 'next-auth';
+import CredentialsProvider from 'next-auth/providers/credentials';
+import GitHubProvider from 'next-auth/providers/github';
+import GoogleProvider from 'next-auth/providers/google';
+import EmailProvider from 'next-auth/providers/email';
+import { PrismaAdapter } from '@auth/prisma-adapter';
+import { PrismaClient } from '@prisma/client';
+import { prisma } from './prismaDB';
+import type { Adapter } from 'next-auth/adapters';
 
 export const authOptions: NextAuthOptions = {
   pages: {
-    signIn: "/auth/signin",
+    signIn: '/auth/signin',
   },
   adapter: PrismaAdapter(prisma) as Adapter,
   secret: process.env.SECRET,
   session: {
-    strategy: "jwt",
+    strategy: 'jwt',
   },
 
   providers: [
     CredentialsProvider({
-      name: "credentials",
+      name: 'credentials',
       credentials: {
-        email: { label: "Email", type: "text", placeholder: "Jhondoe" },
-        password: { label: "Password", type: "password" },
-        username: { label: "Username", type: "text", placeholder: "Jhon Doe" },
+        email: { label: 'Email', type: 'text', placeholder: 'Jhondoe' },
+        password: { label: 'Password', type: 'password' },
+        username: { label: 'Username', type: 'text', placeholder: 'Jhon Doe' },
       },
 
       async authorize(credentials) {
         // check to see if email and password is there
         if (!credentials?.email || !credentials?.password) {
-          throw new Error("Please enter an email or password");
+          throw new Error('Please enter an email or password');
         }
 
         // check to see if user already exist
@@ -43,7 +43,7 @@ export const authOptions: NextAuthOptions = {
 
         // if user was not found
         if (!user || !user?.password) {
-          throw new Error("Invalid email or password");
+          throw new Error('Invalid email or password');
         }
 
         // check to see if passwords match
@@ -55,8 +55,8 @@ export const authOptions: NextAuthOptions = {
         // console.log(passwordMatch);
 
         if (!passwordMatch) {
-          console.log("test", passwordMatch);
-          throw new Error("Incorrect password");
+          console.log('test', passwordMatch);
+          throw new Error('Incorrect password');
         }
 
         return user;

@@ -2,8 +2,7 @@ const Newsletter = () => {
   return (
     <div
       className="wow fadeInUp relative mb-12 overflow-hidden rounded-[5px] bg-primary px-11 py-[60px] text-center lg:px-8"
-      data-wow-delay=".1s"
-    >
+      data-wow-delay=".1s">
       <h3 className="mb-[6px] text-[28px] font-semibold leading-[40px] text-white">
         Join our newsletter!
       </h3>
@@ -33,8 +32,7 @@ const Newsletter = () => {
             height="46"
             viewBox="0 0 46 46"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+            xmlns="http://www.w3.org/2000/svg">
             <circle
               cx="1.39737"
               cy="44.6026"
@@ -171,8 +169,7 @@ const Newsletter = () => {
             height="46"
             viewBox="0 0 46 46"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+            xmlns="http://www.w3.org/2000/svg">
             <circle
               cx="1.39737"
               cy="44.6026"

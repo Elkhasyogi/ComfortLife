@@ -1,16 +1,15 @@
-import SingleBlog from "@/components/Blog/SingleBlog";
-import Breadcrumb from "@/components/Common/Breadcrumb";
-import { getAllPosts } from "@/utils/markdown";
-import { Metadata } from "next";
+import SingleBlog from '@/components/Blog/SingleBlog';
+import Breadcrumb from '@/components/Common/Breadcrumb';
+import { getAllPosts } from '@/utils/markdown';
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title:
-    "Blog Grids | Play SaaS Starter Kit and Boilerplate for Next.js",
-  description: "Blog grids page description",
+  title: 'Blog Grids | Play SaaS Starter Kit and Boilerplate for Next.js',
+  description: 'Blog grids page description',
 };
 
 const Blog = () => {
-  const posts = getAllPosts(["title", "date", "excerpt", "coverImage", "slug"]);
+  const posts = getAllPosts(['title', 'date', 'excerpt', 'coverImage', 'slug']);
 
   return (
     <>

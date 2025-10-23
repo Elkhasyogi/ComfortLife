@@ -1,5 +1,5 @@
-import SectionTitle from "../Common/SectionTitle";
-import SingleFaq from "./SingleFaq";
+import SectionTitle from '../Common/SectionTitle';
+import SingleFaq from './SingleFaq';
 
 const Faq = () => {
   return (
@@ -53,8 +53,7 @@ const Faq = () => {
             height="134"
             viewBox="0 0 48 134"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+            xmlns="http://www.w3.org/2000/svg">
             <circle
               cx="45.6673"
               cy="132"
@@ -343,8 +342,7 @@ const Faq = () => {
             height="134"
             viewBox="0 0 48 134"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+            xmlns="http://www.w3.org/2000/svg">
             <circle
               cx="45.6673"
               cy="132"

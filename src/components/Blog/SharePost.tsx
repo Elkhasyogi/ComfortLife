@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 const SharePost = () => {
   return (
@@ -9,8 +9,7 @@ const SharePost = () => {
           height="32"
           viewBox="0 0 32 32"
           fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+          xmlns="http://www.w3.org/2000/svg">
           <path
             d="M0 16C0 7.16344 7.16344 0 16 0C24.8366 0 32 7.16344 32 16C32 24.8366 24.8366 32 16 32C7.16344 32 0 24.8366 0 16Z"
             fill="#4064AC"
@@ -27,8 +26,7 @@ const SharePost = () => {
           height="33"
           viewBox="0 0 32 33"
           fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+          xmlns="http://www.w3.org/2000/svg">
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -43,8 +41,7 @@ const SharePost = () => {
           height="32"
           viewBox="0 0 33 32"
           fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+          xmlns="http://www.w3.org/2000/svg">
           <path
             fillRule="evenodd"
             clipRule="evenodd"

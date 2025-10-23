@@ -1,54 +1,59 @@
-"use client";
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import toast from "react-hot-toast";
-import { useState } from "react";
-import MagicLink from "../MagicLink";
-import Loader from "@/components/Common/Loader";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
+'use client';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
+import { useState } from 'react';
+import MagicLink from '../MagicLink';
+import Loader from '@/components/Common/Loader';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 const SignUp = () => {
   const router = useRouter();
   const [isPassword, setIsPassword] = useState(true);
   const [loading, setLoading] = useState(false);
-  const schema = z.object({
-    email: z.string().email("Invalid email address"),
-    password: z.string().min(6, "Password must be at least 6 characters"),
-    confirmPassword: z.string().min(6, "Please confirm your password"),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords do not match",
-    path: ["confirmPassword"],
-  });
+  const schema = z
+    .object({
+      email: z.string().email('Invalid email address'),
+      password: z.string().min(6, 'Password must be at least 6 characters'),
+      confirmPassword: z.string().min(6, 'Please confirm your password'),
+    })
+    .refine((data) => data.password === data.confirmPassword, {
+      message: 'Passwords do not match',
+      path: ['confirmPassword'],
+    });
 
   type FormData = z.infer<typeof schema>;
 
-  const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({
     resolver: zodResolver(schema),
-    mode: "onChange",
+    mode: 'onChange',
   });
 
   const onSubmit = (data: FormData) => {
-    console.log("errror===", errors);
+    console.log('errror===', errors);
     console.log('sadf===', data);
     setLoading(true);
     const finalData = { ...data };
 
-    fetch("/api/register", {
-      method: "POST",
+    fetch('/api/register', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(finalData),
     })
       .then((res) => res.json())
       .then((data) => {
-        toast.success("Successfully registered");
+        toast.success('Successfully registered');
         setLoading(false);
-        router.push("/signin");
+        router.push('/signin');
       })
       .catch((err) => {
         toast.error(err.message);
@@ -63,8 +68,7 @@ const SignUp = () => {
           <div className="w-full px-4">
             <div
               className="wow fadeInUp shadow-form relative mx-auto max-w-[525px] overflow-hidden rounded-xl bg-white px-8 py-14 text-center dark:bg-dark-2 sm:px-12 md:px-[60px]"
-              data-wow-delay=".15s"
-            >
+              data-wow-delay=".15s">
               <div className="mb-10 text-center">
                 <Link href="/" className="mx-auto inline-block max-w-[160px]">
                   <Image
@@ -87,42 +91,53 @@ const SignUp = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="mb-[22px]">
                     <input
-                      {...register("email")}
+                      {...register('email')}
                       type="email"
                       placeholder="Email"
                       name="email"
                       required
                       className="w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-dark outline-none transition placeholder:text-dark-6 focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:text-white dark:focus:border-primary"
                     />
-                    {errors.email && <p className="text-xs mt-1 text-red-500 w-full text-left">{errors.email.message}</p>}
+                    {errors.email && (
+                      <p className="mt-1 w-full text-left text-xs text-red-500">
+                        {errors.email.message}
+                      </p>
+                    )}
                   </div>
                   <div className="mb-[22px]">
                     <input
-                      {...register("password")}
+                      {...register('password')}
                       type="password"
                       placeholder="Password"
                       name="password"
                       required
                       className="w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-dark outline-none transition placeholder:text-dark-6 focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:text-white dark:focus:border-primary"
                     />
-                    {errors.password && <p className="text-xs mt-1 text-red-500 w-full text-left">{errors.password.message}</p>}
+                    {errors.password && (
+                      <p className="mt-1 w-full text-left text-xs text-red-500">
+                        {errors.password.message}
+                      </p>
+                    )}
                   </div>
                   <div className="mb-[22px]">
                     <input
-                      {...register("confirmPassword")}
+                      {...register('confirmPassword')}
                       type="password"
                       placeholder="Confirm Password"
                       name="confirmPassword"
                       required
                       className="w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-dark outline-none transition placeholder:text-dark-6 focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:text-white dark:focus:border-primary"
                     />
-                    {errors.confirmPassword && <p className="text-xs mt-1 text-red-500 w-full text-left">{errors.confirmPassword.message}</p>}
+                    {errors.confirmPassword && (
+                      <p className="mt-1 w-full text-left text-xs text-red-500">
+                        {errors.confirmPassword.message}
+                      </p>
+                    )}
                   </div>
                   <div className="mb-9">
                     <button
                       type="submit"
-                      className="flex w-full cursor-pointer items-center justify-center rounded-md border border-primary bg-primary px-5 py-3 text-base text-white transition duration-300 ease-in-out hover:bg-blue-dark"
-                    >
+                      className="flex w-full cursor-pointer items-center justify-center rounded-md border border-primary bg-primary px-5 py-3 text-base text-white transition duration-300 ease-in-out hover:bg-blue-dark">
                       Sign Up {loading && <Loader />}
                     </button>
                   </div>
@@ -132,11 +147,11 @@ const SignUp = () => {
               )}
 
               <p className="text-body-secondary mb-4 text-base">
-                By creating an account you are agree with our{" "}
+                By creating an account you are agree with our{' '}
                 <Link href="/#" className="text-primary hover:underline">
                   Privacy
-                </Link>{" "}
-                and{" "}
+                </Link>{' '}
+                and{' '}
                 <Link href="/#" className="text-primary hover:underline">
                   Policy
                 </Link>
@@ -146,8 +161,7 @@ const SignUp = () => {
                 Already have an account?
                 <Link
                   href="/signin"
-                  className="pl-2 text-primary hover:underline"
-                >
+                  className="pl-2 text-primary hover:underline">
                   Sign In
                 </Link>
               </p>
@@ -159,8 +173,7 @@ const SignUp = () => {
                     height="40"
                     viewBox="0 0 40 40"
                     fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
+                    xmlns="http://www.w3.org/2000/svg">
                     <circle
                       cx="1.39737"
                       cy="38.6026"
@@ -281,8 +294,7 @@ const SignUp = () => {
                     height="40"
                     viewBox="0 0 29 40"
                     fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
+                    xmlns="http://www.w3.org/2000/svg">
                     <circle
                       cx="2.288"
                       cy="25.9912"

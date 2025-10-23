@@ -1,5 +1,5 @@
-import SectionTitle from "../Common/SectionTitle";
-import SingleBlog from "./SingleBlog";
+import SectionTitle from '../Common/SectionTitle';
+import SingleBlog from './SingleBlog';
 
 const HomeBlogSection = ({ posts }: any) => {
   return (

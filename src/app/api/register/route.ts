@@ -1,13 +1,13 @@
-import bcrypt from "bcrypt";
-import { NextResponse } from "next/server";
-import { prisma } from "@/utils/prismaDB";
+import bcrypt from 'bcrypt';
+import { NextResponse } from 'next/server';
+import { prisma } from '@/utils/prismaDB';
 
 export async function POST(request: any) {
   const body = await request.json();
   const { name, email, password } = body;
 
   if (!name || !email || !password) {
-    return NextResponse.json("Missing Fields", { status: 400 });
+    return NextResponse.json('Missing Fields', { status: 400 });
   }
 
   const exist = await prisma.user.findUnique({
@@ -17,7 +17,7 @@ export async function POST(request: any) {
   });
 
   if (exist) {
-    return NextResponse.json("User already exists!", { status: 500 });
+    return NextResponse.json('User already exists!', { status: 500 });
   }
 
   const hashedPassword = await bcrypt.hash(password, 10);
@@ -30,5 +30,5 @@ export async function POST(request: any) {
     },
   });
 
-  return NextResponse.json("User created successfully!", { status: 200 });
+  return NextResponse.json('User created successfully!', { status: 200 });
 }

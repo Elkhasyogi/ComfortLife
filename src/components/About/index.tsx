@@ -1,12 +1,11 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
 
 const About = () => {
   return (
     <section
       id="about"
-      className="bg-gray-1 pb-8 pt-20 dark:bg-dark-2 lg:pb-[70px] lg:pt-[120px]"
-    >
+      className="bg-gray-1 pb-8 pt-20 dark:bg-dark-2 lg:pb-[70px] lg:pt-[120px]">
       <div className="container">
         <div className="wow fadeInUp" data-wow-delay=".2s">
           <div className="-mx-4 flex flex-wrap items-center">
@@ -28,8 +27,7 @@ const About = () => {
 
                 <Link
                   href="#"
-                  className="inline-flex items-center justify-center rounded-md bg-primary px-7 py-3 text-center text-base font-medium text-white duration-300 hover:bg-primary/90"
-                >
+                  className="inline-flex items-center justify-center rounded-md bg-primary px-7 py-3 text-center text-base font-medium text-white duration-300 hover:bg-primary/90">
                   Know More
                 </Link>
               </div>
@@ -39,8 +37,7 @@ const About = () => {
               <div className="-mx-2 flex flex-wrap sm:-mx-4 lg:-mx-2 xl:-mx-4">
                 <div className="w-full px-2 sm:w-1/2 sm:px-4 lg:px-2 xl:px-4">
                   <div
-                    className={`relative mb-4 sm:mb-8 sm:h-[400px] md:h-[540px] lg:h-[400px] xl:h-[500px] `}
-                  >
+                    className={`relative mb-4 sm:mb-8 sm:h-[400px] md:h-[540px] lg:h-[400px] xl:h-[500px] `}>
                     <Image
                       src="/images/about/about-image-01.jpg"
                       alt="about image"
@@ -79,8 +76,7 @@ const About = () => {
                           height="144"
                           viewBox="0 0 106 144"
                           fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
+                          xmlns="http://www.w3.org/2000/svg">
                           <rect
                             opacity="0.1"
                             x="-67"
@@ -97,8 +93,7 @@ const About = () => {
                               y1="47.127"
                               x2="-10.3111"
                               y2="178.431"
-                              gradientUnits="userSpaceOnUse"
-                            >
+                              gradientUnits="userSpaceOnUse">
                               <stop stopColor="white" />
                               <stop
                                 offset="1"
@@ -115,8 +110,7 @@ const About = () => {
                           height="97"
                           viewBox="0 0 130 97"
                           fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
+                          xmlns="http://www.w3.org/2000/svg">
                           <rect
                             opacity="0.1"
                             x="0.86792"
@@ -133,8 +127,7 @@ const About = () => {
                               y1="-6.67725"
                               x2="78.6495"
                               y2="133.937"
-                              gradientUnits="userSpaceOnUse"
-                            >
+                              gradientUnits="userSpaceOnUse">
                               <stop stopColor="white" />
                               <stop
                                 offset="1"
@@ -151,8 +144,7 @@ const About = () => {
                           height="104"
                           viewBox="0 0 175 104"
                           fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
+                          xmlns="http://www.w3.org/2000/svg">
                           <rect
                             opacity="0.1"
                             x="175.011"
@@ -169,8 +161,7 @@ const About = () => {
                               y1="108.611"
                               x2="225.634"
                               y2="256.79"
-                              gradientUnits="userSpaceOnUse"
-                            >
+                              gradientUnits="userSpaceOnUse">
                               <stop stopColor="white" />
                               <stop
                                 offset="1"

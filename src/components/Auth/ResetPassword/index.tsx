@@ -1,21 +1,21 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { useRouter } from "next/navigation";
-import toast from "react-hot-toast";
-import Loader from "@/components/Common/Loader";
-import Link from "next/link";
-import Image from "next/image";
+'use client';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
+import Loader from '@/components/Common/Loader';
+import Link from 'next/link';
+import Image from 'next/image';
 
 const ResetPassword = ({ token }: { token: string }) => {
   const [data, setData] = useState({
-    newPassword: "",
-    ReNewPassword: "",
+    newPassword: '',
+    ReNewPassword: '',
   });
   const [loader, setLoader] = useState(false);
 
   const [user, setUser] = useState({
-    email: "",
+    email: '',
   });
 
   const router = useRouter();
@@ -34,7 +34,7 @@ const ResetPassword = ({ token }: { token: string }) => {
         }
       } catch (error: any) {
         toast.error(error?.response?.data);
-        router.push("/forgot-password");
+        router.push('/forgot-password');
       }
     };
 
@@ -53,8 +53,8 @@ const ResetPassword = ({ token }: { token: string }) => {
     e.preventDefault();
     setLoader(true);
 
-    if (data.newPassword === "") {
-      toast.error("Please enter your password.");
+    if (data.newPassword === '') {
+      toast.error('Please enter your password.');
       return;
     }
 
@@ -66,8 +66,8 @@ const ResetPassword = ({ token }: { token: string }) => {
 
       if (res.status === 200) {
         toast.success(res.data);
-        setData({ newPassword: "", ReNewPassword: "" });
-        router.push("/signin");
+        setData({ newPassword: '', ReNewPassword: '' });
+        router.push('/signin');
       }
 
       setLoader(false);
@@ -84,8 +84,7 @@ const ResetPassword = ({ token }: { token: string }) => {
           <div className="w-full px-4">
             <div
               className="wow fadeInUp relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white px-8 py-14 text-center dark:bg-dark-2 sm:px-12 md:px-[60px]"
-              data-wow-delay=".15s"
-            >
+              data-wow-delay=".15s">
               <div className="mb-10 text-center">
                 <Link href="/" className="mx-auto inline-block max-w-[160px]">
                   <Image
@@ -132,8 +131,7 @@ const ResetPassword = ({ token }: { token: string }) => {
                 <div className="">
                   <button
                     type="submit"
-                    className="flex w-full cursor-pointer items-center justify-center rounded-md border border-primary bg-primary px-5 py-3 text-base text-white transition duration-300 ease-in-out hover:bg-blue-dark"
-                  >
+                    className="flex w-full cursor-pointer items-center justify-center rounded-md border border-primary bg-primary px-5 py-3 text-base text-white transition duration-300 ease-in-out hover:bg-blue-dark">
                     Save Password {loader && <Loader />}
                   </button>
                 </div>
@@ -146,8 +144,7 @@ const ResetPassword = ({ token }: { token: string }) => {
                     height="40"
                     viewBox="0 0 40 40"
                     fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
+                    xmlns="http://www.w3.org/2000/svg">
                     <circle
                       cx="1.39737"
                       cy="38.6026"
@@ -268,8 +265,7 @@ const ResetPassword = ({ token }: { token: string }) => {
                     height="40"
                     viewBox="0 0 29 40"
                     fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
+                    xmlns="http://www.w3.org/2000/svg">
                     <circle
                       cx="2.288"
                       cy="25.9912"

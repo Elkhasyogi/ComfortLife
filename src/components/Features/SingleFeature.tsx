@@ -1,5 +1,5 @@
-import { Feature } from "@/types/feature";
-import Link from "next/link";
+import { Feature } from '@/types/feature';
+import Link from 'next/link';
 
 const SingleFeature = ({ feature }: { feature: Feature }) => {
   const { icon, title, paragraph, btn, btnLink } = feature;
@@ -18,8 +18,7 @@ const SingleFeature = ({ feature }: { feature: Feature }) => {
         </p>
         <Link
           href={btnLink}
-          className="text-base font-medium text-dark hover:text-primary dark:text-white dark:hover:text-primary"
-        >
+          className="text-base font-medium text-dark hover:text-primary dark:text-white dark:hover:text-primary">
           {btn}
         </Link>
       </div>

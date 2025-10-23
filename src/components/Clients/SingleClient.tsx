@@ -1,6 +1,6 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Client } from "@/types/client";
+import Image from 'next/image';
+import Link from 'next/link';
+import { Client } from '@/types/client';
 
 const SingleClient = ({ client }: { client: Client }) => {
   const { title, link, logo, logoWhite } = client;
