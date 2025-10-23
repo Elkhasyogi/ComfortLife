@@ -7,6 +7,52 @@ export const NAV_DATA = [
       {
         title: "Dashboard",
         icon: Icons.HomeIcon,
+        url: '/dashboard',
+        items: [],
+      },
+      {
+        title: "Data Base",
+        url: "/senior-profile",
+        icon: Icons.User,
+        items: [],
+      },
+      {
+        title: "Personal Care",
+        url: "/personal-care",
+        icon: Icons.User,
+        items: [],
+      },
+      {
+        title: "Budget Overview",
+        icon: Icons.FourCircle,
+        items: [],
+      },
+      {
+        title: "Application form & Statement",
+        url: "/tables",
+        icon: Icons.Table,
+        items: [
+          {
+            title: "Service 1 ",
+            url: "/tables",
+          },
+           {
+            title: "Service 2 ",
+            url: "/tables",
+          },
+        ],
+      },
+    ],
+  },
+]
+
+export const NAV_DATA_Sample = [
+  {
+    label: "MAIN MENU",
+    items: [
+      {
+        title: "Dashboard",
+        icon: Icons.HomeIcon,
         items: [
           {
             title: "eCommerce",

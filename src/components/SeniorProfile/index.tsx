@@ -1,9 +1,57 @@
+'use client';
+import { IoHomeOutline } from "react-icons/io5";
+import { FaInfo, FaInfoCircle, FaUser } from "react-icons/fa";
+import Tooltip from "../Tooltip";
+import DatePickerInput from "../DatePickerInput";
+import { useState } from "react";
+import SelectOptions from "../SelectOptions";
+
+const options = [
+  { value: "Pflegegrad 1", label: "Pflegegrad 1" },
+  { value: "Pflegegrad 2", label: "Pflegegrad 2" },
+  { value: "Pflegegrad 3", label: "Pflegegrad 3" },
+  { value: "Pflegegrad 4", label: "Pflegegrad 4" },
+  { value: "Pflegegrad 5", label: "Pflegegrad 5" },
+];
+
+const genderOptions = [
+  { value: "Gender 1", label: "Gender 1" },
+  { value: "Gender 2", label: "Gender 2" },
+  { value: "Gender 3", label: "Gender 3" },
+];
+
+const germanStates: { value: string; label: string }[] = [
+  { value: 'baden-wuerttemberg', label: 'Baden-Württemberg' },
+  { value: 'bavaria', label: 'Bavaria (Bayern)' },
+  { value: 'berlin', label: 'Berlin' },
+  { value: 'brandenburg', label: 'Brandenburg' },
+  { value: 'bremen', label: 'Bremen' },
+  { value: 'hamburg', label: 'Hamburg' },
+  { value: 'hesse', label: 'Hesse (Hessen)' },
+  { value: 'lower-saxony', label: 'Lower Saxony (Niedersachsen)' },
+  { value: 'mecklenburg-vorpommern', label: 'Mecklenburg-Vorpommern' },
+  { value: 'north-rhine-westphalia', label: 'North Rhine-Westphalia (Nordrhein-Westfalen)' },
+  { value: 'rhineland-palatinate', label: 'Rhineland-Palatinate (Rheinland-Pfalz)' },
+  { value: 'saarland', label: 'Saarland' },
+  { value: 'saxony', label: 'Saxony (Sachsen)' },
+  { value: 'saxony-anhalt', label: 'Saxony-Anhalt (Sachsen-Anhalt)' },
+  { value: 'schleswig-holstein', label: 'Schleswig-Holstein' },
+  { value: 'thuringia', label: 'Thuringia (Thüringen)' },
+];
+
 const SeniorProfile = () => {
+  const [birthDate, setBirthDate] = useState<Date | null>(null);
+  const [careSince, setCareSince] = useState<Date | null>(null);
+  const [levelOfCare, setLevelOfCare] = useState<OptionType | null>(null);
+  const [federalState, setFederalState] = useState<OptionType | null>(null);
+  const [gender, setGender] = useState<OptionType | null>(null);
+  const [insurancySource, setInsurancySource] = useState<string>();
+
   return (
-    <section id="senior-profile" className="relative py-10">
+    <section id="senior-profile" className="relative">
       <div className="absolute left-0 top-0 -z-[1] h-full w-full dark:bg-dark"></div>
       <div className="absolute left-0 top-0 -z-[1] h-1/2 w-full bg-[#E9F9FF] dark:bg-dark-700 lg:h-[45%] xl:h-1/2"></div>
-      <div className="container px-4">
+      <div className="">
         <div className="flex flex-wrap items-center">
           <div className="w-full">
             <div className="ud-contact-content-wrapper">
@@ -13,21 +61,56 @@ const SeniorProfile = () => {
                     className="wow fadeInUp rounded-lg bg-white px-8 py-10 shadow-testimonial dark:bg-dark-2 dark:shadow-none sm:px-10 sm:py-12 md:p-[60px] lg:p-10 lg:px-10 lg:py-12 2xl:p-[60px]"
                     data-wow-delay=".2s
                     ">
-                    <h3 className="mb-8 text-center text-2xl font-semibold text-dark dark:text-white md:text-[28px] md:leading-[1.42]">
-                      Daten Klient / Data Base Senior / Data dasar Senior
-                    </h3>
+                    <div className="flex justify-between items-center mb-8 ">
+                      <h3 className="text-center text-2xl font-semibold text-dark dark:text-white md:text-[20px] md:leading-[1.42] flex items-center">
+                        Daten Klient / Data Base Senior / Data dasar Senior
+                      </h3>
+                      <div>
+                        <button
+                          type="submit"
+                          className="inline-flex items-center justify-center rounded-md bg-primary px-10 py-3 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-primary/90">
+                          Save
+                        </button>
+                      </div>
+                    </div>
                     <form>
                       <div className="mb-[22px]">
                         <label
                           htmlFor="fullName"
                           className="mb-4 block text-sm text-body-color dark:text-dark-6">
-                          Vorname / First Name / Nama depan
+                          Title <Tooltip text="The title is necassary for A and B"><FaInfoCircle className="inline"/></Tooltip>
                         </label>
                         <input
                           type="text"
                           name="firstName"
-                          placeholder="Adam"
-                          className="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-dark placeholder:text-body-color/60 focus:border-primary focus:outline-none dark:border-dark-3 dark:text-white"
+                          className="w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-dark outline-none transition placeholder:text-dark-6 focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:text-white dark:focus:border-primary"
+                        />
+                      </div>
+                      <div className="mb-[22px]">
+                        <label
+                          htmlFor="gender"
+                          className="mb-4 block text-sm text-body-color dark:text-dark-6">
+                          Geschlecht / Gender / Jenis Kelamin
+                        </label>
+                        <SelectOptions   
+                          name="gender"
+                          options={genderOptions}
+                          placeholder={'Select gender...'}
+                          isSearchable={true}
+                          value={gender}
+                          onChange={(e: OptionType | null) => setGender(e)}
+                        />
+                      </div>
+                      <div className="mb-[22px]">
+                        <label
+                          htmlFor="fullName"
+                          className="mb-4 block text-sm text-body-color dark:text-dark-6">
+                          Vorname / First Name / Nama depan <Tooltip text="The first name is necassary for A and B"><FaInfoCircle className="inline"/></Tooltip>
+                        </label>
+                        <input
+                          type="text"
+                          name="firstName"
+                          className="w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-dark outline-none transition placeholder:text-dark-6 focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:text-white dark:focus:border-primary"
                         />
                       </div>
                       <div className="mb-[22px]">
@@ -39,8 +122,7 @@ const SeniorProfile = () => {
                         <input
                           type="text"
                           name="sureName"
-                          placeholder="Gelius"
-                          className="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-dark placeholder:text-body-color/60 focus:border-primary focus:outline-none dark:border-dark-3 dark:text-white"
+                          className="w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-dark outline-none transition placeholder:text-dark-6 focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:text-white dark:focus:border-primary"
                         />
                       </div>
                       <div className="mb-[22px]">
@@ -52,8 +134,7 @@ const SeniorProfile = () => {
                         <input
                           type="text"
                           name="street"
-                          placeholder="Goethestraße 12"
-                          className="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-dark placeholder:text-body-color/60 focus:border-primary focus:outline-none dark:border-dark-3 dark:text-white"
+                          className="w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-dark outline-none transition placeholder:text-dark-6 focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:text-white dark:focus:border-primary"
                         />
                       </div>
                       <div className="mb-[22px]">
@@ -65,8 +146,7 @@ const SeniorProfile = () => {
                         <input
                           type="text"
                           name="postCode"
-                          placeholder="80336"
-                          className="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-dark placeholder:text-body-color/60 focus:border-primary focus:outline-none dark:border-dark-3 dark:text-white"
+                          className="w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-dark outline-none transition placeholder:text-dark-6 focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:text-white dark:focus:border-primary"
                         />
                       </div>
                       <div className="mb-[22px]">
@@ -78,8 +158,7 @@ const SeniorProfile = () => {
                         <input
                           type="text"
                           name="city"
-                          placeholder="München"
-                          className="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-dark placeholder:text-body-color/60 focus:border-primary focus:outline-none dark:border-dark-3 dark:text-white"
+                          className="w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-dark outline-none transition placeholder:text-dark-6 focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:text-white dark:focus:border-primary"
                         />
                       </div>
                       <div className="mb-[22px]">
@@ -88,66 +167,77 @@ const SeniorProfile = () => {
                           className="mb-4 block text-sm text-body-color dark:text-dark-6">
                           Geburtsdatum / Birthdate / Tanggal Lahir
                         </label>
-                        <input
-                          type="text"
-                          name="birthDate"
-                          placeholder="2000/12/12"
-                          className="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-dark placeholder:text-body-color/60 focus:border-primary focus:outline-none dark:border-dark-3 dark:text-white"
-                        />
-                      </div>
-                      <div className="mb-[22px]">
-                        <label
-                          htmlFor="insuranceNumber"
-                          className="mb-4 block text-sm text-body-color dark:text-dark-6">
-                          Versicherungen Nr. / Health Insurancy Number / Nomor
-                          Asuransi Kesehatan
-                        </label>
-                        <input
-                          type="text"
-                          name="insuranceNumber"
-                          placeholder="Versicherungen Nr. / Health Insurancy Number / Nomor Asuransi Kesehatan"
-                          className="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-dark placeholder:text-body-color/60 focus:border-primary focus:outline-none dark:border-dark-3 dark:text-white"
-                        />
-                      </div>
-                      <div className="mb-[22px]">
-                        <label
-                          htmlFor="levelOfCare"
-                          className="mb-4 block text-sm text-body-color dark:text-dark-6">
-                          Pflegegrad / Level of Care / Tingkat perawatan
-                        </label>
-                        <input
-                          type="text"
-                          name="levelOfCare"
-                          placeholder="Pflegegrad / Level of Care / Tingkat perawatan"
-                          className="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-dark placeholder:text-body-color/60 focus:border-primary focus:outline-none dark:border-dark-3 dark:text-white"
-                        />
-                      </div>
-                      <div className="mb-[22px]">
-                        <label
-                          htmlFor="levelOfCaresince"
-                          className="mb-4 block text-sm text-body-color dark:text-dark-6">
-                          Pflegegrad seit / Level of Care Since / Tingkat
-                          perawatan sejak
-                        </label>
-                        <input
-                          type="text"
-                          name="levelOfCaresince"
-                          placeholder="Pflegegrad seit / Level of Care Since / Tingkat perawatan sejak"
-                          className="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-dark placeholder:text-body-color/60 focus:border-primary focus:outline-none dark:border-dark-3 dark:text-white"
-                        />
+                        <DatePickerInput onChange={(d: Date | null)=> setBirthDate(d)} value={birthDate} displayFormat="dd.MM.yyyy" />
                       </div>
                       <div className="mb-[22px]">
                         <label
                           htmlFor="emailAddress"
                           className="mb-4 block text-sm text-body-color dark:text-dark-6">
-                          Telefon Nr. / Phone Number / Nomor telepon
+                          Email Adresse / Email Address / Alamat Email
                         </label>
                         <input
                           type="text"
                           name="emailAddress"
-                          placeholder="Telefon Nr. / Phone Number / Nomor telepon"
-                          className="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-dark placeholder:text-body-color/60 focus:border-primary focus:outline-none dark:border-dark-3 dark:text-white"
+                          className="w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-dark outline-none transition placeholder:text-dark-6 focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:text-white dark:focus:border-primary"
                         />
+                      </div>
+                      <div className="mb-[22px]">
+                        <label
+                          htmlFor="phoneNumber"
+                          className="mb-4 block text-sm text-body-color dark:text-dark-6">
+                          Telefon Nr. / Phone Number / Nomor telepon
+                        </label>
+                        <input
+                          type="text"
+                          name="phoneNumber"
+                          className="w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-dark outline-none transition placeholder:text-dark-6 focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:text-white dark:focus:border-primary"
+                        />
+                      </div>
+                      <div className="mb-[22px]">
+                        <label
+                          htmlFor="federalState"
+                          className="mb-4 block text-sm text-body-color dark:text-dark-6">
+                          Bundesland / Federal State / Negara bagian
+                        </label>
+                        <SelectOptions   
+                          name="federalState"
+                          options={germanStates}
+                          placeholder={'Select an Federal State...'}
+                          isSearchable={true}
+                          value={federalState}
+                          onChange={(e: OptionType | null) => setFederalState(e)}
+                        />
+                      </div>
+                      <div className="mb-[22px]">
+                        <label
+                          htmlFor="insurancySource"
+                          className="mb-4 block text-sm text-body-color dark:text-dark-6">
+                          Government Insurancy or Private
+                        </label>
+                        <div className="flex gap-4">
+                          <label className="inline-flex items-center gap-2 text-sm">
+                            <input
+                              type="radio"
+                              name="insurancySource"
+                              value="Government Insurancy"
+                              checked={insurancySource=== 'Government Insurancy'}
+                              onChange={() => setInsurancySource('Government Insurancy')}
+                              className="accent-primary h-4 w-4"
+                            />
+                            <span className="text-gray-700 dark:text-gray-200">Government Insurancy</span>
+                          </label>
+                          <label className="inline-flex items-center gap-2 text-sm">
+                            <input
+                              type="radio"
+                              name="insurancySource"
+                              value="Private"
+                              checked={insurancySource=== 'Private'}
+                              onChange={() => setInsurancySource('Private')}
+                              className="accent-primary h-4 w-4"
+                            />
+                            <span className="text-gray-700 dark:text-gray-200">Private</span>
+                          </label>
+                        </div>
                       </div>
                       <div className="mb-[22px]">
                         <label
@@ -159,29 +249,44 @@ const SeniorProfile = () => {
                         <input
                           type="text"
                           name="responsibleInsurancy"
-                          placeholder="Zuständige Pflegekasse / Responsible Insurancy / Asuransi kesehatan yang bertanggung jawab"
-                          className="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-dark placeholder:text-body-color/60 focus:border-primary focus:outline-none dark:border-dark-3 dark:text-white"
+                          className="w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-dark outline-none transition placeholder:text-dark-6 focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:text-white dark:focus:border-primary"
                         />
                       </div>
                       <div className="mb-[22px]">
                         <label
-                          htmlFor="federalState"
+                          htmlFor="insuranceNumber"
                           className="mb-4 block text-sm text-body-color dark:text-dark-6">
-                          Bundesland / Federal State / Negara bagian
+                          Versicherungen Nr. / Health Insurancy Number / Nomor Asuransi Kesehatan
                         </label>
                         <input
                           type="text"
-                          name="federalState"
-                          placeholder="Bundesland / Federal State / Negara bagian"
-                          className="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-dark placeholder:text-body-color/60 focus:border-primary focus:outline-none dark:border-dark-3 dark:text-white"
+                          name="insuranceNumber"
+                          className="w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-dark outline-none transition placeholder:text-dark-6 focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:text-white dark:focus:border-primary"
                         />
                       </div>
-                      <div className="mb-0">
-                        <button
-                          type="submit"
-                          className="inline-flex items-center justify-center rounded-md bg-primary px-10 py-3 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-primary/90">
-                          Submit
-                        </button>
+                      <div className="mb-[22px]">
+                        <label
+                          htmlFor="levelOfCare"
+                          className="mb-4 block text-sm text-body-color dark:text-dark-6">
+                          Pflegegrad / Level of Care / Tingkat perawatan
+                        </label>
+                        <SelectOptions   
+                          name="levelOfCare"
+                          options={options}
+                          placeholder={'Select an Level of Car...'}
+                          isSearchable={true}
+                          value={levelOfCare}
+                          onChange={(e: OptionType | null) => setLevelOfCare(e)}
+                        />
+                      </div>
+                      <div className="mb-[22px]">
+                        <label
+                          htmlFor="levelOfCaresince"
+                          className="mb-4 block text-sm text-body-color dark:text-dark-6">
+                          Pflegegrad seit / Level of Care Since / Tingkat
+                          perawatan sejak
+                        </label>
+                        <DatePickerInput onChange={(d: Date | null)=> setCareSince(d)} value={careSince} displayFormat="dd.MM.yyyy" />
                       </div>
                     </form>
                   </div>

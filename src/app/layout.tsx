@@ -15,7 +15,7 @@ export default function RootLayout({
       <body>
         <Providers>
           <div className="isolate">
-            <Header />
+            
 
             {children}
 

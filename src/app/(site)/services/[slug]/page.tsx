@@ -3,6 +3,7 @@ import PopularArticle from '@/components/Blog/PopularArticle';
 import SingleBlog from '@/components/Blog/SingleBlog';
 import Breadcrumb from '@/components/Common/Breadcrumb';
 import Features from '@/components/Features';
+import Header from '@/components/Header';
 import Service from '@/components/Services';
 import { getAllPosts, getPostBySlug } from '@/utils/markdown';
 import markdownToHtml from '@/utils/markdownToHtml';
@@ -79,6 +80,7 @@ export default async function Post({ params }: Props) {
 
   return (
     <>
+      <Header />
       <Breadcrumb pageName={post?.title} />
 
       <section className="pb-10 dark:bg-dark lg:pb-20">

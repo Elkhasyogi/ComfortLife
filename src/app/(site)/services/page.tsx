@@ -1,5 +1,6 @@
 import SingleBlog from '@/components/Blog/SingleBlog';
 import Breadcrumb from '@/components/Common/Breadcrumb';
+import Header from '@/components/Header';
 import { getAllPosts } from '@/utils/markdown';
 import { Metadata } from 'next';
 
@@ -13,6 +14,7 @@ const Blog = () => {
 
   return (
     <>
+      <Header />
       <Breadcrumb pageName="Service" />
 
       <section className="pb-10 pt-20 lg:pb-20 lg:pt-[120px]">

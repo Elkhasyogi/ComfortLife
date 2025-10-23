@@ -1,4 +1,5 @@
-import Breadcrumb from '@/components/Common/Breadcrumb';
+import DashboardLayout from '@/components/DashboardLayout';
+import Breadcrumb from '@/components/DashboardLayout/Breadcrumbs/Breadcrumb';
 import SeniorProfile from '@/components/SeniorProfile';
 import { Metadata } from 'next';
 
@@ -10,9 +11,10 @@ export const metadata: Metadata = {
 const ContactPage = () => {
   return (
     <>
-      <Breadcrumb pageName="Data Senior" />
-
-      <SeniorProfile />
+      <DashboardLayout>
+        <Breadcrumb pageName="Data Senior" />
+        <SeniorProfile />
+      </DashboardLayout>
     </>
   );
 };
