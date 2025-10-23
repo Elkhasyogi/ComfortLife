@@ -12,8 +12,8 @@ interface SignupPageProps {
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
-const SignupPage = async ({ searchParams }: SignupPageProps) => {
-  const type = await searchParams?.type ?? '';
+const SignupPage = ({ searchParams }: SignupPageProps) => {
+  const type = searchParams?.type ?? '';
   return (
     <>
       <Breadcrumb pageName={`Register ${capitalizeFirst(type as string)} Page`} />
