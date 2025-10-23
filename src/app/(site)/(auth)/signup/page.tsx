@@ -4,19 +4,18 @@ import { capitalizeFirst } from "@/utils/capitalizeFirstLetter";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title:
-    "Register",
+  title: "Register",
 };
 
 interface SignupPageProps {
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
-const SignupPage = ({ searchParams }: SignupPageProps) => {
-  const type = searchParams?.type ?? '';
+const SignupPage = async ({ searchParams }: SignupPageProps) => {
+  const {type} = await searchParams;
   return (
     <>
-      <Breadcrumb pageName={`Register ${capitalizeFirst(type as string)} Page`} />
+      <Breadcrumb pageName={`Register ${capitalizeFirst(type as string ?? '')} Page`} />
       <SignUp />
     </>
   );
