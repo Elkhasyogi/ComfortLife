@@ -4,16 +4,15 @@ import Team from '@/components/Team';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About Us | Play SaaS Starter Kit and Boilerplate for Next.js',
+  title: 'About Us',
   description: 'This is About page description',
 };
 
 const AboutPage = () => {
   return (
     <main>
-      <Breadcrumb pageName="About Us Page" />
+      <Breadcrumb pageName="About Us" />
       <About />
-      <Team />
     </main>
   );
 };

@@ -1,6 +1,25 @@
 import { Menu } from '@/types/menu';
 
-const menuData: Menu[] = [];
+const menuData: Menu[] = [
+  {
+    id: 1,
+    title: 'About Us',
+    path: '/about',
+    newTab: false,
+  },
+  {
+    id: 2,
+    title: 'Service 1',
+    path: '/services/service-1',
+    newTab: false,
+  },
+  {
+    id: 3,
+    title: 'Service 2',
+    path: '/services/service-2',
+    newTab: false,
+  },
+];
 const menuDataSample: Menu[] = [
   {
     id: 1,
