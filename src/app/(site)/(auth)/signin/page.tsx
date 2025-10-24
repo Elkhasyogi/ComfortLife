@@ -4,7 +4,7 @@ import Header from '@/components/Header';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Sign In | Play SaaS Starter Kit and Boilerplate for Next.js',
+  title: 'Sign In | ComfortLife',
 };
 
 const SigninPage = () => {

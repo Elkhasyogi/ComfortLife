@@ -21,8 +21,8 @@ export async function generateMetadata({ params }: Props) {
   const posts = getAllPosts(['title', 'date', 'excerpt', 'coverImage', 'slug']);
   const post = getPostBySlug(slug, ['title', 'author', 'content', 'metadata']);
 
-  const siteName = process.env.SITE_NAME || 'Your Site Name';
-  const authorName = process.env.AUTHOR_NAME || 'Your Author Name';
+  const siteName = process.env.SITE_NAME || 'ComfortLife';
+  const authorName = process.env.AUTHOR_NAME || 'ComfortLife';
 
   if (post) {
     const metadata = {
