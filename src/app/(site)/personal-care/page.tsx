@@ -4,11 +4,11 @@ import PersonalCare from '@/components/PersonalCare';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Senior Profile Page',
+  title: 'Personal Care',
   description: '',
 };
 
-const ContactPage = () => {
+const PersonalCarePage = () => {
   return (
     <>
       <DashboardLayout>
@@ -19,4 +19,4 @@ const ContactPage = () => {
   );
 };
 
-export default ContactPage;
+export default PersonalCarePage;

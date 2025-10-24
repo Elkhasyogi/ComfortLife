@@ -1,22 +1,22 @@
 import DashboardLayout from '@/components/DashboardLayout';
 import Breadcrumb from '@/components/DashboardLayout/Breadcrumbs/Breadcrumb';
-import Dashboard from '@/components/Dashboard';
+import BudgetOverview from '@/components/BudgetOverview';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Dashboard',
+  title: 'Budget Overview',
   description: '',
 };
 
-const DashboardPage = () => {
+const BudgetOverviewPage = () => {
   return (
     <>
       <DashboardLayout>
-        <Breadcrumb pageName="Dashboard" />
-        <Dashboard />
+        <Breadcrumb pageName="Budget Overview" />
+        <BudgetOverview />
       </DashboardLayout>
     </>
   );
 };
 
-export default DashboardPage;
+export default BudgetOverviewPage;

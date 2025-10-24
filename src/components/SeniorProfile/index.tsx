@@ -20,6 +20,11 @@ const genderOptions = [
   { value: "Gender 3", label: "Gender 3" },
 ];
 
+const optionsResponsibleInsurancies = [
+  { value: "Responsible Insurancy 1", label: "Responsible Insurancy 1" },
+  { value: "Responsible Insurancy 2", label: "Responsible Insurancy 2" },
+];
+
 const germanStates: { value: string; label: string }[] = [
   { value: 'baden-wuerttemberg', label: 'Baden-Württemberg' },
   { value: 'bavaria', label: 'Bavaria (Bayern)' },
@@ -46,6 +51,7 @@ const SeniorProfile = () => {
   const [federalState, setFederalState] = useState<OptionType | null>(null);
   const [gender, setGender] = useState<OptionType | null>(null);
   const [insurancySource, setInsurancySource] = useState<string>();
+  const [responsibleInsurancy, setResponsibleInsurancy] = useState<OptionType | null>(null);
 
   return (
     <section id="senior-profile" className="relative">
@@ -103,13 +109,25 @@ const SeniorProfile = () => {
                       </div>
                       <div className="mb-[22px]">
                         <label
+                          htmlFor="formAddress"
+                          className="mb-4 block text-sm text-body-color dark:text-dark-6">
+                          Form of Address
+                        </label>
+                        <input
+                          type="text"
+                          name="formAddress"
+                          className="w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-dark outline-none transition placeholder:text-dark-6 focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:text-white dark:focus:border-primary"
+                        />
+                      </div>
+                      <div className="mb-[22px]">
+                        <label
                           htmlFor="fullName"
                           className="mb-4 block text-sm text-body-color dark:text-dark-6">
                           Vorname / First Name / Nama depan <Tooltip text="The first name is necassary for A and B"><FaInfoCircle className="inline"/></Tooltip>
                         </label>
                         <input
                           type="text"
-                          name="firstName"
+                          name="fullName"
                           className="w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-dark outline-none transition placeholder:text-dark-6 focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:text-white dark:focus:border-primary"
                         />
                       </div>
@@ -246,10 +264,13 @@ const SeniorProfile = () => {
                           Zuständige Pflegekasse / Responsible Insurancy /
                           Asuransi kesehatan yang bertanggung jawab
                         </label>
-                        <input
-                          type="text"
+                        <SelectOptions   
                           name="responsibleInsurancy"
-                          className="w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-dark outline-none transition placeholder:text-dark-6 focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:text-white dark:focus:border-primary"
+                          options={optionsResponsibleInsurancies}
+                          placeholder={'Select Responsible Insurancy...'}
+                          isSearchable={true}
+                          value={responsibleInsurancy}
+                          onChange={(e: OptionType | null) => setResponsibleInsurancy(e)}
                         />
                       </div>
                       <div className="mb-[22px]">

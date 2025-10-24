@@ -307,6 +307,11 @@ const Header = () => {
                           className="rounded-lg bg-primary px-6 py-3 text-base font-medium text-white duration-300 ease-in-out hover:bg-primary/90 dark:bg-white/10 dark:hover:bg-white/20">
                           Register Worker
                         </Link>
+                        <Link
+                          href="/signin"
+                          className="rounded-lg mx-2 bg-primary px-6 py-3 text-base font-medium text-white duration-300 ease-in-out hover:bg-primary/90 dark:bg-white/10 dark:hover:bg-white/20">
+                          Signin
+                        </Link>
                       </>
                     ) : (
                       <>
@@ -325,6 +330,15 @@ const Header = () => {
                               : 'bg-white/10 hover:bg-white/20'
                           }`}>
                           Register Worker
+                        </Link>
+                        <Link
+                          href="/signin"
+                          className={`rounded-lg mx-2 px-6 py-3 text-base font-medium text-white duration-300 ease-in-out ${
+                            sticky
+                              ? 'bg-primary hover:bg-primary/90 dark:bg-white/10 dark:hover:bg-white/20'
+                              : 'bg-white/10 hover:bg-white/20'
+                          }`}>
+                          Signin
                         </Link>
                       </>
                     )}

@@ -29,16 +29,16 @@ export const NAV_DATA = [
       },
       {
         title: "Application form & Statement",
-        url: "/tables",
+        url: "/application-form-and-statement",
         icon: Icons.Table,
         items: [
           {
             title: "Service 1 ",
-            url: "/tables",
+            url: "/application-form-and-statement/service-1",
           },
            {
             title: "Service 2 ",
-            url: "/tables",
+            url: "/application-form-and-statement/service-2",
           },
         ],
       },

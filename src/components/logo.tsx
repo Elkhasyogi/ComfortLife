@@ -8,7 +8,7 @@ export function Logo() {
       <Image
         src={'/images/logo/logo.png'}
         fill={false}
-        width={230}
+        width={200}
         height={100}
         className="dark:hidden"
         alt="ComfortLive logo"

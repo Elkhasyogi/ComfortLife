@@ -110,7 +110,7 @@ export function Sidebar() {
                                 aria-hidden="true"
                               />
 
-                              <span>{item.title}</span>
+                              <span className="w-full text-left">{item.title}</span>
 
                               <ChevronUp
                                 className={cn(
